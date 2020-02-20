@@ -4,13 +4,10 @@ pipeline {
     stage('Build') {
       agent any
       steps {
+        echo 'Make gradlew executable'
+        sh 'chmod +x ./gradlew'
         echo 'Running ...'
-        withGradle() {
-          echo 'Make gradlew executable'
-          sh 'chmod +x ./gradlew'
-          sh './gradlew clean test --no-daemon'
-        }
-
+        sh './gradlew clean test --no-daemon'
       }
     }
 
