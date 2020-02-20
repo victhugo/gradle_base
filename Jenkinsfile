@@ -2,9 +2,13 @@ pipeline {
   agent any
   stages {
     stage('Build') {
+      agent any
       steps {
         echo 'Running ...'
-        sh './gradlew clean test --no-daemon'
+        withGradle() {
+          sh './gradlew clean test --no-daemon'
+        }
+
       }
     }
 
