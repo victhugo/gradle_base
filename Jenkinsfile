@@ -14,6 +14,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Build the projecct'
+        sh 'chmod +x ./gradlew'
         sh './gradlew build'
       }
     }
